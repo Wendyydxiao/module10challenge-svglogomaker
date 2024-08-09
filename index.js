@@ -11,13 +11,29 @@ const questions = [
     type: 'input',
     name: 'text',
     message: 'Enter text for the logo (up to 3 characters):',
-    validate: input => input.length <= 3 || 'Text must be 3 characters or less',
+    validate: input => {
+        if (input.length > 3) {
+          return 'Text must be 3 characters or less';
+        }
+        if (!input) {
+          return 'Text cannot be empty';
+        }
+        return true;
+      },
   },
+  
   {
     type: 'input',
     name: 'textColor',
     message: 'Enter text color (color keyword or hexadecimal):',
+    validate: input => {
+        if (!input) {
+          return 'Text color cannot be empty';
+        }
+        return true;
+      },
   },
+
   {
     type: 'list',
     name: 'shape',
@@ -28,6 +44,12 @@ const questions = [
     type: 'input',
     name: 'shapeColor',
     message: 'Enter shape color (color keyword or hexadecimal):',
+    validate: input => {
+        if (!input) {
+          return 'Shape color cannot be empty';
+        }
+        return true;
+      },
   },
 ];
 
@@ -43,21 +65,30 @@ function generateSVG({ text, textColor, shape, shapeColor }) {
     case 'square':
       shapeInstance = new Square(shapeColor);
       break;
+
   }
 
   return `
 <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
   ${shapeInstance.render()}
-  <text x="150" y="150" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
 </svg>`;
 }
 
 inquirer.prompt(questions).then(answers => {
-    const svgContent = generateSVG(answers);
-    const sanitizedText = sanitizeFilename(answers.text);
-    const fileName = sanitizedText || 'logo';
-    const filePath = `examples/${fileName}.svg`;
+    try {
+        const svgContent = generateSVG(answers);
+        const sanitizedText = sanitizeFilename(answers.text);
+        const fileName = sanitizedText || 'logo';
+        const filePath = `examples/${fileName}.svg`;
 
-    fs.writeFileSync(filePath, svgContent);
-    console.log(`Generated ${fileName}.svg`);
+        if (!fs.existsSync('examples')) {
+            fs.mkdirSync('examples');
+        }
+
+        fs.writeFileSync(filePath, svgContent);
+        console.log(`Generated ${fileName}.svg`);
+    } catch (err) {
+        console.error('An error occurred during the logo generation process:', err.message);
+    }
 });
