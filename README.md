@@ -12,7 +12,7 @@ This project is a command-line application that dynamically generates logo in SV
 - [Questions](#questions)
 
 ## Installation
-Ensure that Node.js is installed on your machine. >> Clone the repository to your local machine. >> Run `npm install` to install the necessary dependencies. (inquirer at v8.2.4 & jest)
+Ensure that Node.js is installed on your machine. >> Clone the repository to your local machine. >> Run `npm install` to install the necessary dependencies (inquirer at v8.2.4 & jest).
 
 ## Usage
 Open your terminal and navigate to the project directory. >> Run the command `node index.js`. >> Input prompt answers with the relevant information about your project. >> Once all questions are answered, a SVG file will be generated in /examples folder and named after the input logo text.
