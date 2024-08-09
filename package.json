@@ -1,0 +1,21 @@
+{
+  "name": "module10challenge-svglogomaker",
+  "version": "1.0.0",
+  "description": "Bootcamp Module 10 Challenge - SVG Logo Maker",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
