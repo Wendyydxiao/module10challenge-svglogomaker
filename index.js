@@ -71,10 +71,11 @@ function generateSVG({ text, textColor, shape, shapeColor }) {
   return `
 <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
   ${shapeInstance.render()}
-  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
+  <text x="150" y="100" font-size="60" text-anchor="middle" fill="${textColor}" dominant-baseline="middle">${text}</text>
 </svg>`;
 }
 
+function runInquirer() {
 inquirer.prompt(questions).then(answers => {
     try {
         const svgContent = generateSVG(answers);
@@ -91,4 +92,11 @@ inquirer.prompt(questions).then(answers => {
     } catch (err) {
         console.error('An error occurred during the logo generation process:', err.message);
     }
-});
+  });
+}
+
+module.exports = {runInquirer, generateSVG, sanitizeFilename };
+
+if (require.main === module) {
+  runInquirer();
+}
