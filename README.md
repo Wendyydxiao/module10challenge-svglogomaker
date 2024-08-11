@@ -24,7 +24,7 @@ This project is licensed under None.
 Happy to have your contribution! Simply fork the repo and submit a pull request.
 
 ## Tests
-NA, tests were ran manually for function testing.
+Use command line 'npm test' to run Jest for unit tests with 2 test suites and 7 use cases. Details refer to shapes.test.js & index.test.js files.
 
 ## Questions
 For questions, please contact me on GitHub at [wendyydxiao](https://github.com/wendyydxiao) or email me at wendyxiao1023@gmail.com.
