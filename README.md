@@ -18,7 +18,7 @@ Ensure that Node.js is installed on your machine. >> Clone the repository to you
 Open your terminal and navigate to the project directory. >> Run the command `node index.js`. >> Input prompt answers with the relevant information about your project. >> Once all questions are answered, a SVG file will be generated in /examples folder and named after the input logo text.
 
 ## License
-This project is licensed under None.
+This project is licensed under MIT.
 
 ## Contributing
 Happy to have your contribution! Simply fork the repo and submit a pull request.
