@@ -81,14 +81,14 @@ inquirer.prompt(questions).then(answers => {
         const svgContent = generateSVG(answers);
         const sanitizedText = sanitizeFilename(answers.text);
         const fileName = sanitizedText || 'logo';
-        const filePath = `examples/${fileName}.svg`;
+        const filePath = `examples/${fileName}.logo.svg`;
 
         if (!fs.existsSync('examples')) {
             fs.mkdirSync('examples');
         }
 
         fs.writeFileSync(filePath, svgContent);
-        console.log(`Generated ${fileName}.svg`);
+        console.log(`Generated ${fileName}.logo.svg`);
     } catch (err) {
         console.error('An error occurred during the logo generation process:', err.message);
     }
